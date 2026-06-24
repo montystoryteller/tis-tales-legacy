@@ -1,0 +1,10 @@
+{
+  "name": "tis-tales",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "project-setup": "echo 'Project setup complete'",
+    "build": "hugo --minify --gc",
+    "dev": "hugo server --buildDrafts --bind 0.0.0.0 --port 1313"
+  }
+}
