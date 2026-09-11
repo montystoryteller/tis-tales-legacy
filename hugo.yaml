@@ -1,7 +1,7 @@
 baseURL: http://tis-tales-legacy.montystoryteller.org/
 languageCode: en
 title: '''Tis Tales'
-theme: PaperMod
+theme: hugoplate
 taxonomies:
   category: categories
   tag: tags
