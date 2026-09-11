@@ -2,6 +2,52 @@ baseURL: http://tis-tales-legacy.montystoryteller.org/
 languageCode: en
 title: '''Tis Tales'
 theme: hugoplate
+summaryLength: 10
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: assets/notwatching/hugo_stats\.json
+      target: css
+module:
+  hugoVersion:
+    extended: true
+    min: 0.158.0
+    max: 0.165.0
+  mounts:
+    - source: assets
+      target: assets
+    - source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json
+      disableWatch: true
+  imports:
+    - path: github.com/zeon-studio/hugoplate
+    - path: github.com/gethugothemes/hugo-modules/llms-txt
+    - path: github.com/gethugothemes/hugo-modules/search
+    - path: github.com/gethugothemes/hugo-modules/pwa
+    - path: github.com/gethugothemes/hugo-modules/images
+    - path: github.com/gethugothemes/hugo-modules/videos
+    - path: github.com/gethugothemes/hugo-modules/icons/font-awesome
+    - path: github.com/gethugothemes/hugo-modules/gzip-caching
+    - path: github.com/gethugothemes/hugo-modules/adsense
+    - path: github.com/gethugothemes/hugo-modules/accordion
+    - path: github.com/gethugothemes/hugo-modules/table-of-contents
+    - path: github.com/gethugothemes/hugo-modules/tab
+    - path: github.com/gethugothemes/hugo-modules/modal
+    - path: github.com/gethugothemes/hugo-modules/gallery-slider
+    - path: github.com/gethugothemes/hugo-modules/components/preloader
+    - path: github.com/gethugothemes/hugo-modules/components/social-share
+    - path: github.com/gethugothemes/hugo-modules/components/cookie-consent
+    - path: github.com/gethugothemes/hugo-modules/components/announcement
+    - path: github.com/gethugothemes/hugo-modules/components/custom-script
+    - path: github.com/gethugothemes/hugo-modules/components/render-link
+    - path: github.com/gethugothemes/hugo-modules/shortcodes/button
+    - path: github.com/gethugothemes/hugo-modules/shortcodes/notice
+    - path: github.com/gethugothemes/hugo-modules/shortcodes/mermaid
+    - path: github.com/gethugothemes/hugo-modules/seo-tools/basic-seo
+    - path: github.com/gethugothemes/hugo-modules/seo-tools/site-verifications
+    - path: github.com/gethugothemes/hugo-modules/seo-tools/google-tag-manager
+    - path: github.com/gethugothemes/hugo-modules/components/open-remark
 taxonomies:
   category: categories
   tag: tags
@@ -19,6 +65,37 @@ params:
   assets:
     favicon: /favicon.ico
     disableHLJS: true
+  plugins:
+    css:
+      - link: plugins/swiper/swiper-bundle.css
+        lazy: true
+      - link: plugins/glightbox/glightbox.css
+        lazy: true
+      - link: plugins/font-awesome/v6/brands.css
+        lazy: true
+      - link: plugins/font-awesome/v6/solid.css
+        lazy: true
+      - link: plugins/font-awesome/v6/icons.css
+        lazy: true
+    js:
+      - link: js/search.js
+        lazy: false
+      - link: plugins/swiper/swiper-bundle.js
+        lazy: false
+      - link: plugins/glightbox/glightbox.js
+        lazy: true
+      - link: js/gallery-slider.js
+        lazy: true
+      - link: plugins/cookie.js
+        lazy: false
+      - link: js/accordion.js
+        lazy: true
+      - link: js/tab.js
+        lazy: true
+      - link: js/modal.js
+        lazy: true
+      - link: plugins/youtube-lite.js
+        lazy: true
 markup:
   highlight:
     codeFences: true
@@ -32,9 +109,42 @@ outputs:
     - HTML
     - RSS
     - JSON
+    - WebAppManifest
+    - SearchIndex
+    - llms
+    - llmsfull
+    - md
+  page:
+    - HTML
+    - RSS
+    - md
+  section:
+    - HTML
+    - RSS
+    - md
+  taxonomy:
+    - HTML
+    - RSS
+    - md
+  term:
+    - HTML
+    - RSS
+    - md
 outputFormats:
   RSS:
     mediaType: application/rss+xml
     baseName: feed
+  WebAppManifest:
+    mediaType: application/manifest+json
+    rel: manifest
+  SearchIndex:
+    mediaType: application/json
+    baseName: searchindex
+    isPlainText: true
+    notAlternative: true
+mediaTypes:
+  application/manifest+json:
+    suffixes:
+      - webmanifest
 menu:
   main: []
